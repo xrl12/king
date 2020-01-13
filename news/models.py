@@ -80,6 +80,15 @@ class Join_hands(BaseModel):
         verbose_name = '合作伙伴'
         verbose_name_plural = verbose_name
 
+# 新闻分类
+class NewsClassfly(BaseModel):
+    name = models.CharField(verbose_name='新闻分类',max_length=10)
+    def __str__(self):
+        return self.name
+    class Meta():
+        verbose_name = '新闻分类'
+        verbose_name_plural = verbose_name
+
 # 新闻
 class News(BaseModel):
     cover = models.ImageField(verbose_name='封面',upload_to='news/%Y/%m/%d')
@@ -88,6 +97,7 @@ class News(BaseModel):
                            imagePath="news/%(basename)s_%(datetime)s.%(extname)s", filePath="files/")
     name = models.CharField(verbose_name='文章名字',max_length=25)
     browse = models.IntegerField(verbose_name='浏览量',default=0)
+    classfly = models.ForeignKey(to=NewsClassfly,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -107,4 +117,12 @@ class Staff(BaseModel):
         return self.name
     class Meta():
         verbose_name = '客户表'
+        verbose_name_plural = verbose_name
+
+class Second_menu(BaseModel):
+    name = models.CharField(verbose_name='二级菜单名字',max_length=10)
+    def __str__(self):
+        return self.name
+    class Meta():
+        verbose_name = '二级菜单'
         verbose_name_plural = verbose_name

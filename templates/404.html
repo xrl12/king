@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+404页面
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <center>
+    <img src="{% static 'image/home.jpg' %}" alt="找不到家了">
+    </center>
+{% endblock %}

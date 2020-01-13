@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
 
-
+    'pure_pagination',
     'DjangoUeditor',
 ]
 
@@ -84,10 +84,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dbz',
-        'HOST':'182.92.188.50',
+        'HOST':'localhost',
         'PORT':'3306',
         'PASSWORD':'123456',
-        'USER':'king'
+        'USER':'root'
     }
 }
 
@@ -135,3 +135,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 # 配置图片
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")
 MEDIA_URL = '/media/'
+
+# 配置分页
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 1,
+    'MARGIN_PAGES_DISPLAYED': 2,
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}

@@ -1,250 +1,99 @@
+{% extends 'base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name="keywords" content=""/>
-	<meta name="description" content=""/>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<meta name="renderer" content="webkit">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
-	<meta name="applicable-device" content="pc,mobile">
-    <title>新闻详情</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
-	<link rel="stylesheet" type="text/css" href="css/pagecss.css"/>
-</head>
-<body>
-<!-- 手机导航 -->
-<article  class="ModuleMobileNavGiant hidden-md hidden-lg">
-    <section class="containers">
-        <section id="MobileNav" class="mobileNav">
-            <header>
-                <a href="#" class="mm-hbtn">
-                    <div class="lcbody">
-                        <div class="lcitem top">
-                            <div class="rect top"></div>
-                        </div>
-                        <div class="lcitem bottom">
-                            <div class="rect bottom"></div>
+{% block title %}
+新闻详情
+{% endblock %}
+
+
+{% block content %}
+
+    <!--网页头部-->
+    {% load static %}
+    <div class="container-fluid hidden-sm hidden-xs">
+        <div class="ModuleGridContainer clearfix" gridswidthmode="2">
+            <div class="col-lg-6 col-md-6">
+                <img src="{%static 'image/logo.png'  %}" alt="Logo图片">
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="ModuleNavGiant clearfix">
+                    {% for nav in navs %}
+                        {% if nav.name == '产品展示' %}
+                            <div class="main-nav-item-group productshow">
+
+                        {% else %}
+                            <div class="main-nav-item-group">
+
+                       {% endif %}
+
+                    {% if nav.name == '新闻资讯' %}
+                    <a href="/" class="main-nav-item main-nav-item-hover">{{nav.name}}</a>
+                    {% else %}
+                        <a href="/" class="main-nav-item">{{nav.name}}</a>
+                    {% endif %}
+                    <div class="sub-nav-item-group">
+                        <div class="arrow"></div>
+
+                        <ul class="sub-nav-item-box">
+                        {% for menu in second_menus %}
+                            <li>
+                                <a href="#" class="sub-nav-item">
+                                    <span class="inner">
+                                        {{menu.name}}
+                                    </span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+
                         </div>
                     </div>
-                </a>
-                <p>某某电器</p>
-            </header>
-        </section>
-        <div class="header-model"></div>
-        <section class="mobileNavFloatLayer">
-            <nav class="micro-nav-item">
-                <ul id="accordion">
-					<li class="clearfix">
-						<a href="#" class="link" target="_self">
-                            <p class="colorlump">
-                                <i class="main-class-colorlump"></i>
-                            </p>
-                            <p class="fl maxlarge">首页</p>
-                        </a>
 
-                    </li>
-					<li class="clearfix border1px">
-						<a href="#" class="link" target="_self">
-                            <p class="colorlump">
-                                <i class="main-class-colorlump"></i>
-                            </p>
-                            <p class="fl maxlarge"> 产品展示</p>
-                            <span class="more fr iconfont icon-jia"></span>
-                        </a>
-                        <ul class="clearfix subnav navul" style="display: none;">
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">空调</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">冰箱</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">洗衣机</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">厨房小电</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">厨房大电</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">厨房大电</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">生活家电</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">热水器/净水</p>
-								</a>
-							</li>
-							<li class="borderTop1px">
-								<a href="#" class="link" target="_self">
-									<p class="fl maxmiddle">配件及周边</p>
-								</a>
-							</li>
-						</ul>
-                    </li>
-					<li class="clearfix border1px">
-                        <a href="#" class="link" target="_self">
-                            <p class="colorlump">
-                                <i class="main-class-colorlump"></i>
-                            </p>
-                            <p class="fl maxlarge">新闻资讯</p>
-                        </a>
-                    </li>
-					<li class="clearfix border1px">
-						<a href="#" class="link" target="_self">
-                            <p class="colorlump">
-                                <i class="main-class-colorlump"></i>
-                            </p>
-                            <p class="fl maxlarge">关于我们</p>
-                        </a>
-                    </li>
-					<li class="clearfix border1px">
-						<a href="#" class="link" target="_self">
-                            <p class="colorlump">
-                                <i class="main-class-colorlump"></i>
-                            </p>
-                            <p class="fl maxlarge">联系我们</p>
-                        </a>
-                    </li>
-				</ul>
-            </nav>
-        </section>
-    </section>
-</article>
+                    {% endfor %}
 
-<!--网页头部-->
-<div class="container-fluid hidden-sm hidden-xs">
-	<div class="ModuleGridContainer clearfix" gridswidthmode="2">
-		<div class="col-lg-6 col-md-6">
-			<img src="image/logo.png" alt="Logo图片">
-		</div>
-		<div class="col-lg-6 col-md-6">
-			<div class="ModuleNavGiant clearfix">
-				<div class="main-nav-item-group">
-					<a href="/" class="main-nav-item">首页</a>
-				</div>
-				<div class="main-nav-item-group productshow">
-					<a href="/" class="main-nav-item">产品展示</a>
-					<div class="sub-nav-item-group">
-						<div class="arrow"></div>
-						<ul class="sub-nav-item-box">
-							<li><a href="#" class="sub-nav-item"><span class="inner">空调</span></a></li>
-							<li><a href="#" class="sub-nav-item"><span class="inner">空调</span></a></li>
-							<li><a href="#" class="sub-nav-item"><span class="inner">空调</span></a></li>
-							<li><a href="#" class="sub-nav-item"><span class="inner">空调</span></a></li>
-							<li><a href="#" class="sub-nav-item"><span class="inner">空调</span></a></li>
-							<li><a href="#" class="sub-nav-item"><span class="inner">空调</span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="main-nav-item-group">
-					<a href="/" class="main-nav-item">新闻资讯</a>
-				</div>
-				<div class="main-nav-item-group">
-					<a href="/" class="main-nav-item">关于我们</a>
-				</div>
-				<div class="main-nav-item-group">
-					<a href="/" class="main-nav-item">联系我们</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!--新闻详情-->
-<div class="ModuleGridContainer" gridswidthmode="2">
-    <h2 class="newsDetailTitle">让旧家电更懂你，迈联智能家居套件测评</h2>
-    <div class="newsSource">
-        <span>关注：30</span>
-        <span>发表时间：2019-09-07 10:21:25</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <section>
-        <article>
-            <!--以下为富文本-->
-            <p style="margin-top: 26px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255); line-height: 2em;"><span style="color: rgb(102, 102, 102);">未来是物联网的时代，而且这个物联网的时代已经开始到来了，所以很多厂商早早就开始布局物联网，vivo最近也开始对这个领域发力，在其系统中植入《JOVI物联》，让设备用起来更方便、快捷。今天要测评的就是可以使用jovi物联的两款产品，由ORVIBO提供的智能插座和小方智能遥控器。</span></p><p style="margin-top: 22px; padding: 0px; font-size: 16px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255);"><span style="font-size: 18px; font-weight: 700; position: relative; padding-left: 9px; color: rgb(0, 0, 0);">智能插座开箱</span></p><div class="img-container" style="margin-top: 30px; font-family: arial; font-size: 12px; background-color: rgb(255, 255, 255);"></div><p style="margin-top: 26px; padding: 0px; font-size: 16px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255);"><span style="color: rgb(102, 102, 102);">两款产品的包装都是纸盒做的，盒口有圆形封胶，智能插座由于它的特殊结构，盒子里用一个双层的纸板进行固定。</span></p><div class="img-container" style="margin-top: 30px; font-family: arial; font-size: 12px; background-color: rgb(255, 255, 255);"><img src="https://cdn.img-sys.com/comdata/597/201909/201909071024325381fd.jpg"/></div><p style="margin-top: 26px; padding: 0px; font-size: 16px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255);"><span style="color: rgb(102, 102, 102);">智能插座只有一个硬件本身，并没有配件，因此盒子里只找到这个说明书一张。</span></p><p style="margin-top: 26px; padding: 0px; font-size: 16px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255);"><span style="color: rgb(102, 102, 102);">插座的外观材质用的是白色阻燃塑料，能承受750℃的高温，正面有新国标的五孔插座，插孔离的很近，使用的时候，三孔和二孔插座只能用一个，插孔有儿童防护门，需要一些力气才能插入插头。</span></p><p style="margin-top: 26px; padding: 0px; font-size: 16px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255);"><span style="color: rgb(102, 102, 102);">插座背面是插头，用的是带地线的三眼插头，每根插头的边上，还雕刻有“N”、“L”和地线标志，用作提示。</span></p><p style="margin-top: 26px; padding: 0px; font-size: 16px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255);"><span style="color: rgb(102, 102, 102);">插座顶部有一个圆形的按钮，是插座的开关，但并非电源开关，本质上来讲，应该算是待机开关，因为智能产品不能真正意义上的完全切断电源，只能待机，因为只有待机状态，APP才能远程唤醒。开关上面有“MAX 2500W”字样，代表它最大支持2500W功率的电器，超过这个功率，就可能损坏插座。</span></p>
-        </article>
-    </section>
 
-    <div class="PrevNext clearfix">
-        <span class="prev">
-            <a href="news_detail.html">上一篇 : 人工智能技术在家电行业应用前景广阔</a>
-        </span>
-        <span class="next">
-            <a href="news_detail.html">下一篇 : 让旧家电更懂你，迈联智能家居套件测评</a>
-        </span>
+    <!--新闻详情-->
+    {% for new in news %}
+    <div class="ModuleGridContainer" gridswidthmode="2">
+        <h2 class="newsDetailTitle">{{new.name}}</h2>
+        <div class="newsSource">
+            <span>关注：{{ new.browse }}</span>
+            <span>发表时间：{{new.create_time}}</span>
+        </div>
+        <section>
+            <article>
+                <!--以下为富文本-->
+                <p style="margin-top: 26px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; background-color: rgb(255, 255, 255); line-height: 2em;">
+                    <span style="color: rgb(102, 102, 102);">
+                        {{new.content | safe}}
+                    </span>
+                </p>
+            </article>
+        </section>
+
+        <div class="PrevNext clearfix">
+            <span class="prev">
+                {% if up_new.id >= 1  %}
+                    <a href="{% url 'news:detail' id=up_new.id %}">上一篇 : {{up_new}}</a>
+                {% else %}
+                    <span>上一篇 : ……</span>
+                {% endif %}
+            </span>
+            <span class="next">
+                {% if down_new.id >= 1  %}
+                    <a href="{% url 'news:detail' id=down_new.id %}">下一篇 : {{down_new}}</a>
+                {% else %}
+                    <span>下一篇 : ……</span>
+                {% endif %}
+            </span>
+        </div>
     </div>
-</div>
+    {% endfor %}
 
-<!--页脚-->
-<div class="FooterContainer">
-	<div class="FooterZoneContainer">
-		<div class="ModuleGridContainer clearfix" gridswidthmode="2">
-			<div class="padding-1r0 hidden-sm hidden-xs col-md-3 col-lg-3">
-				<div class="FooterImageGiant">
-					<img src="image/foot_logo.png" alt="Logo图片">
-				</div>
-			</div>
-			<div class="padding-1r0 hidden-sm hidden-xs col-md-3 col-lg-3">
-				<div class="FooterImageTextGiant">
-					<div class="FooterCenter">
-						<div class="padding-10">
-							<p><span>联系我们</span></p>
-							<p><br></p>
-							<p><span>联系电话：0757-12345678</span></p>
-							<p><span>传真：0757-12345678</span></p>
-							<p><span>电子邮箱：123456789@qq.com</span></p>
-							<p><span>地址：佛山南海区某某某大厦1010</span></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="padding-1r0 hidden-sm hidden-xs col-md-3 col-lg-3">
-				<div class="FooterCodeGiant">
-					<img src="image/code.png" alt="微信">
-				</div>
-				<div class="codeTextContainer padding-10">
-					<span>手机微信</span>
-				</div>
-			</div>
-			<div class="padding-1r0 col-xs-12 col-sm-3 col-md-3 col-lg-3">
-				<div class="FooterCodeCenter">
-					<img src="image/code.png" alt="公众号">
-				</div>
-				<div class="codeTextContainer2 padding-10">
-					<span>公众号</span>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="FooterCopyContainer">
-		<div class="ModuleGridContainer clearfix" gridswidthmode="2">
-			<div class="FooterCopyGiant">
-				<div class="padding-10">
-					<p><span>Copyright @ VillaGrandis All Rights Reserved  ICP备案号180006020号-3</span></p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</body>
-</html>
+{% endblock %}
